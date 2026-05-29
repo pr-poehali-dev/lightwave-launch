@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import Section from './Section'
 import Layout from './Layout'
 import { sections } from './sections'
+import Icon from '@/components/ui/icon'
 
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState(0)
@@ -43,6 +44,21 @@ export default function LandingPage() {
 
   return (
     <Layout>
+      {/* Логотип */}
+      <motion.div
+        className="fixed top-0 left-0 z-30 p-5 flex items-center gap-2"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="w-8 h-8 rounded-md bg-[#4CAF7D] flex items-center justify-center">
+          <Icon name="House" size={18} className="text-black" />
+        </div>
+        <span className="text-white font-bold tracking-widest text-sm uppercase">
+          ЭКО<span className="text-[#4CAF7D]">СТРОЙ</span>
+        </span>
+      </motion.div>
+
       <nav className="fixed top-0 right-0 h-screen flex flex-col justify-center z-30 p-4">
         {sections.map((section, index) => (
           <button
